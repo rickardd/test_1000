@@ -2,28 +2,22 @@
 
 <%= link_to "create new article", new_article_path %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @articles.each do |a| %>
-      <tr>
-        <td><%= a.title %></td>
-        <td><%= a.description %></td>
-        <td><%= link_to "show", article_path(a) %></td>
-        <td><%= link_to "delete", article_path(a), method: :delete, data: {confirm: "are you sure?"} %></td>
-        <td><%= link_to "edit", edit_article_path(a) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @articles.each do |a| %>
+<div class="well well-lg">
+  <div class="article-title">
+    <%= link_to a.title, article_path(a) %>
+  </div>
+  <div class="article-body">
+    <%= truncate( a.description, length: 100) %>
+  </div>
+  <div class="article-actions">
+    <%= link_to "show", article_path(a), class: "btn btn-xs btn-success" %>
+    <%= link_to "edit", edit_article_path(a), class: "btn btn-xs btn-primary" %>
+    <%= link_to "delete", article_path(a), method: :delete, class: "btn btn-xs btn-danger", data: {confirm: "Are you sure?"} %>
+  </div>
+</div>
+
+<% end %>
 
 
 
