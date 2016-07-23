@@ -1,0 +1,21 @@
+
+<% @users.each do |u| %>
+  <div class="well well-lg">
+    <div class="user-title">
+      <%= link_to u.username, user_path(u) %>
+    </div>
+    <div class="user-body">
+      <%= gravatar_for( u ) %>
+      <div class="user-meta-details">
+        <small>
+          <%= pluralize( u.articles.count, "article") %>
+        </small>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
