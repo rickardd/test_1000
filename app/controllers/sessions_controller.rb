@@ -8,13 +8,6 @@ class SessionsController < ApplicationController
 
     user = User.find_by( email: params[:session][:email].downcase )
 
-    puts "password"
-    puts user.authenticate( params[:session][:password] )
-    puts "email"
-    puts params[:session][:email]
-    puts "user"
-    puts user.username
-
     if user && user.authenticate( params[:session][:password] )
       session[:user_id] = user.id
       flash[:success] = "Welcome " + user.username + "! You are logged in"
